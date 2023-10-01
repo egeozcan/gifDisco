@@ -88,29 +88,6 @@ func smoothFloodFill(img draw.Image, x, y int, fill color.Color, tolerance float
 	}
 }
 
-func floodFill(img draw.Image, x, y int, fill color.Color, tolerance float64) {
-	q := []image.Point{{x, y}}
-	origColor := img.At(x, y)
-
-	for len(q) > 0 {
-		current := q[0]
-		q = q[1:]
-
-		if colorDistance(img.At(current.X, current.Y), origColor) > tolerance {
-			continue
-		}
-
-		img.Set(current.X, current.Y, fill)
-
-		for _, d := range []image.Point{{-1, 0}, {1, 0}, {0, -1}, {0, 1}} {
-			next := image.Point{current.X + d.X, current.Y + d.Y}
-			if colorDistance(img.At(next.X, next.Y), origColor) <= tolerance {
-				q = append(q, next)
-			}
-		}
-	}
-}
-
 func randomPastelColor() color.RGBA {
 	r := uint8(rand.Intn(128) + 128) // 128 to 255
 	g := uint8(rand.Intn(128) + 128) // 128 to 255
@@ -202,8 +179,6 @@ func main() {
 			}()
 
 			fmt.Printf("Starting frame %d\n", i)
-
-			//floodFill(img, 0, 0, randomPastelColor(), 800)
 
 			for j := 0; j < 60; j++ {
 				fmt.Printf("Frame %d, circle %d\n", i, j)
