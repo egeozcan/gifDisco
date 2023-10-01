@@ -74,8 +74,14 @@ func smoothFloodFill(img draw.Image, x, y int, fill color.Color, tolerance float
 				continue
 			}
 
+			visited[next] = true
+
+			// Check bounds to make sure (next.X, next.Y) is inside img.
+			if next.X < img.Bounds().Min.X || next.X >= img.Bounds().Max.X || next.Y < img.Bounds().Min.Y || next.Y >= img.Bounds().Max.Y {
+				continue
+			}
+
 			if colorDistance(img.At(next.X, next.Y), origColor) <= tolerance {
-				visited[next] = true
 				q = append(q, next)
 			}
 		}
@@ -195,9 +201,13 @@ func main() {
 				fmt.Printf("Finished frame %d\n", i)
 			}()
 
-			floodFill(img, 0, 0, randomPastelColor(), 800)
+			fmt.Printf("Starting frame %d\n", i)
+
+			//floodFill(img, 0, 0, randomPastelColor(), 800)
 
 			for j := 0; j < 60; j++ {
+				fmt.Printf("Frame %d, circle %d\n", i, j)
+
 				var c color.RGBA
 
 				// alternate between pastel and dark colors
