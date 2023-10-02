@@ -9,7 +9,7 @@
 ### Usage
 
 ```bash
-go install https://github.com/egeozcan/gifDisco
+go install github.com/egeozcan/gifDisco@latest
 # within the directory that contains the input.png file
 gifDisco
 ```

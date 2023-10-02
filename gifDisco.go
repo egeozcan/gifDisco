@@ -25,6 +25,7 @@ func colorDistance(c1, c2 color.Color) float64 {
 }
 
 // Linear interpolation between a and b by t
+// When t=0, returns "a". When t=1, returns "b". For 0 < t < 1, you get a mix.
 func lerp(a, b, t float64) float64 {
 	return (1-t)*a + t*b
 }
