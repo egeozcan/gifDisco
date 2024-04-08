@@ -2,7 +2,7 @@
 
 ![input.png](input.png)
 
-### Output
+### Output (Warning: Flashing Lights. Not recommended for people with epilepsy)
 
 ![output.gif](output.gif)
 
