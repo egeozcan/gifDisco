@@ -2,9 +2,16 @@
 
 ![input.png](input.png)
 
-### Output
+### Output (Expand to see)
+
+<details>
+
+<summary>(before you click, I have to warn you against the flashing lights)</summary>
 
 ![output.gif](output.gif)
+
+</details>
+
 
 ### Usage
 
@@ -15,7 +22,15 @@ gifDisco
 ```
 
 No, you can't specify the input file. 
-It's always `input.png` and the output is always `output.gif`. I'm lazy.
+It's always `input.png` and the output is always `{timestamp}_disco.gif`. I'm lazy.
+
+You can also pipe a file to the program, like so:
+
+```bash
+cat input.png | gifDisco
+```
+
+No, the piped file doesn't have to be named `input.png`.
 
 ### TODO
 
